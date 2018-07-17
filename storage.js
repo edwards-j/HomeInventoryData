@@ -106,28 +106,38 @@ saveDatabase(HomeInventoryDatabase, "HomeInventory");
 
 const homeInventory = loadDatabase("HomeInventory");
 
-// for (category in homeInventory) {
-//     //onsole.log("category", homeInventory[category]);
-//     let section = document.createElement("section");
-//     let p1 = document.createElement("p");
-//     let p2 = document.createElement("p");
-//     let p3 = document.createElement("p");
-//     let article = document.getElementById("myStuff");
+for (category in homeInventory) {
+    for (item in homeInventory[category]) {
+        //Creates the section element on the page
+        let section = document.createElement("section");
 
-//     p1.innerHTML = category;
+        //Creates all of the paragraphs on the page
+        let p1 = document.createElement("p");
+        let p2 = document.createElement("p");
+        let p3 = document.createElement("p");
 
-//     for (item in homeInventory[category]) {
-//         console.log(homeInventory[category][item]);
-//         p2.innerHTML = homeInventory[category][item].location;
-//         p3.innerHTML = homeInventory[category][item].description;
-//     }
+        //Gets the element with id myStuff and stores it in article
+        let article = document.getElementById("myStuff");
 
-//     section.appendChild(p1);
-//     section.appendChild(p2);
-//     section.appendChild(p3);
+        //Gets the name, location, and description of each item and stores it in the respective variable of the same name
+        let name = homeInventory[category][item].name;
+        let location = homeInventory[category][item].location;
+        let description = homeInventory[category][item].description;
 
-//     article.appendChild(section);
-// }
+        //Sets the inner HTML of the paragraphs to the value of the name, location, and description variables
+        p1.innerHTML += "Name: " + name
+        p2.innerHTML += "Location: " + location;
+        p3.innerHTML += "Description: " + description;
+
+        //Appends the paragraphs to the section element we created earlier
+        section.appendChild(p1);
+        section.appendChild(p2);
+        section.appendChild(p3);
+
+        //Appends the section element to article with id myStuff
+        article.appendChild(section);
+    }
+}
 
 // for (i = 0; i < homeInventory.electronics; i++) {
 //     let section = document.createElement("section");
@@ -148,59 +158,57 @@ const homeInventory = loadDatabase("HomeInventory");
 //     document.body.appendChild(article);
 // }
 
-console.log(homeInventory);
+// //Appends each of the music items to the page
+// for (i = 0; i < homeInventory.music.length; i++) {
+//     let section = document.createElement("section");
+//     let p1 = document.createElement('p');
+//     let p2 = document.createElement('p');
+//     let p3 = document.createElement('p');
+//     let article = document.getElementById("myStuff");
 
-//Appends each of the music items to the page
-for (i = 0; i < homeInventory.music.length; i++) {
-    let section = document.createElement("section");
-    let p1 = document.createElement('p');
-    let p2 = document.createElement('p');
-    let p3 = document.createElement('p');
-    let article = document.getElementById("myStuff");
+//     p1.innerHTML = "Name: " + homeInventory.music[i].name;
+//     p2.innerHTML = "Location: " + homeInventory.music[i].location;
+//     p3.innerHTML = "Description: " +  homeInventory.music[i].description;
 
-    p1.innerHTML = "Name: " + homeInventory.music[i].name;
-    p2.innerHTML = "Location: " + homeInventory.music[i].location;
-    p3.innerHTML = "Description: " +  homeInventory.music[i].description;
+//     section.appendChild(p1);
+//     section.appendChild(p2);
+//     section.appendChild(p3);
+//     article.appendChild(section);
+// }
 
-    section.appendChild(p1);
-    section.appendChild(p2);
-    section.appendChild(p3);
-    article.appendChild(section);
-}
+// //Appends each of the furniture items to the page
+// for (i = 0; i < homeInventory.furniture.length; i++) {
+//     let section = document.createElement("section");
+//     let p1 = document.createElement('p');
+//     let p2 = document.createElement('p');
+//     let p3 = document.createElement('p');
+//     let article = document.getElementById("myStuff");
 
-//Appends each of the furniture items to the page
-for (i = 0; i < homeInventory.furniture.length; i++) {
-    let section = document.createElement("section");
-    let p1 = document.createElement('p');
-    let p2 = document.createElement('p');
-    let p3 = document.createElement('p');
-    let article = document.getElementById("myStuff");
+//     p1.innerHTML = "Name: " + homeInventory.furniture[i].name;
+//     p2.innerHTML = "Location: " + homeInventory.furniture[i].location;
+//     p3.innerHTML = "Description: " + homeInventory.furniture[i].description;
 
-    p1.innerHTML = "Name: " + homeInventory.furniture[i].name;
-    p2.innerHTML = "Location: " + homeInventory.furniture[i].location;
-    p3.innerHTML = "Description: " + homeInventory.furniture[i].description;
+//     section.appendChild(p1);
+//     section.appendChild(p2);
+//     section.appendChild(p3);
+//     article.appendChild(section);
+// }
 
-    section.appendChild(p1);
-    section.appendChild(p2);
-    section.appendChild(p3);
-    article.appendChild(section);
-}
+// //Appends each of the electronic items to the page
+// for (i = 0; i < homeInventory.electronics.length; i++) {
+//     let section = document.createElement("section");
+//     let p1 = document.createElement('p');
+//     let p2 = document.createElement('p');
+//     let p3 = document.createElement('p');
+//     let article = document.getElementById("myStuff");
 
-//Appends each of the electronic items to the page
-for (i = 0; i < homeInventory.electronics.length; i++) {
-    let section = document.createElement("section");
-    let p1 = document.createElement('p');
-    let p2 = document.createElement('p');
-    let p3 = document.createElement('p');
-    let article = document.getElementById("myStuff");
+//     p1.innerHTML = "Name: " + homeInventory.electronics[i].name;
+//     p2.innerHTML = "Location: " + homeInventory.electronics[i].location;
+//     p3.innerHTML = "Description: " + homeInventory.electronics[i].description;
 
-    p1.innerHTML = "Name: " + homeInventory.electronics[i].name;
-    p2.innerHTML = "Location: " + homeInventory.electronics[i].location;
-    p3.innerHTML = "Description: " + homeInventory.electronics[i].description;
-
-    section.appendChild(p1);
-    section.appendChild(p2);
-    section.appendChild(p3);
-    article.appendChild(section);
-}
+//     section.appendChild(p1);
+//     section.appendChild(p2);
+//     section.appendChild(p3);
+//     article.appendChild(section);
+// }
 
