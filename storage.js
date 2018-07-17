@@ -57,7 +57,7 @@ const couch = {
 }
 
 const chair = {
-    name: "Desk char",
+    name: "Desk chair",
     location: "Desk",
     description: "Extra comfy for those long coding sessions"
 }
@@ -105,30 +105,102 @@ const loadDatabase = function (localStorageKey) {
 saveDatabase(HomeInventoryDatabase, "HomeInventory");
 
 const homeInventory = loadDatabase("HomeInventory");
-console.log(homeInventory.electronics);
 
-for (category in homeInventory) {
-    console.log("category", homeInventory[category]);
+// for (category in homeInventory) {
+//     //onsole.log("category", homeInventory[category]);
+//     let section = document.createElement("section");
+//     let p1 = document.createElement("p");
+//     let p2 = document.createElement("p");
+//     let p3 = document.createElement("p");
+//     let article = document.getElementById("myStuff");
+
+//     p1.innerHTML = category;
+
+//     for (item in homeInventory[category]) {
+//         console.log(homeInventory[category][item]);
+//         p2.innerHTML = homeInventory[category][item].location;
+//         p3.innerHTML = homeInventory[category][item].description;
+//     }
+
+//     section.appendChild(p1);
+//     section.appendChild(p2);
+//     section.appendChild(p3);
+
+//     article.appendChild(section);
+// }
+
+// for (i = 0; i < homeInventory.electronics; i++) {
+//     let section = document.createElement("section");
+//     let p1 = document.createElement("p");
+//     //let p2 = document.createElement("p");
+//     //let p3 = document.createElement("p");
+//     let article = document.getElementById("myStuff");
+
+//     //article.innerHTML = homeInventory.electronics[i][name]
+//     p1.innerHTML = homeInventory.electronics[i]
+//     console.log(p1.innerHTML);
+//     //p2 = homeInventory.electronics[i]
+//     //p2 = homeInventory.electronics[i]
+
+//     section.appendChild(p1);
+//     article.appendChild(section);
+
+//     document.body.appendChild(article);
+// }
+
+console.log(homeInventory);
+
+//Appends each of the music items to the page
+for (i = 0; i < homeInventory.music.length; i++) {
     let section = document.createElement("section");
-    let p1 = document.createElement("p");
-    let p2 = document.createElement("p");
-    let p3 = document.createElement("p");
+    let p1 = document.createElement('p');
+    let p2 = document.createElement('p');
+    let p3 = document.createElement('p');
     let article = document.getElementById("myStuff");
 
-    p1.innerHTML = category;
-
-    for (item in homeInventory[category]) {
-        console.log(homeInventory[category][item]);
-        p2.innerHTML = homeInventory[category][item].location;
-        p3.innerHTML = homeInventory[category][item].description;
-    }
+    p1.innerHTML = "Name: " + homeInventory.music[i].name;
+    p2.innerHTML = "Location: " + homeInventory.music[i].location;
+    p3.innerHTML = "Description: " +  homeInventory.music[i].description;
 
     section.appendChild(p1);
     section.appendChild(p2);
     section.appendChild(p3);
-
     article.appendChild(section);
 }
 
+//Appends each of the furniture items to the page
+for (i = 0; i < homeInventory.furniture.length; i++) {
+    let section = document.createElement("section");
+    let p1 = document.createElement('p');
+    let p2 = document.createElement('p');
+    let p3 = document.createElement('p');
+    let article = document.getElementById("myStuff");
 
+    p1.innerHTML = "Name: " + homeInventory.furniture[i].name;
+    p2.innerHTML = "Location: " + homeInventory.furniture[i].location;
+    p3.innerHTML = "Description: " + homeInventory.furniture[i].description;
+
+    section.appendChild(p1);
+    section.appendChild(p2);
+    section.appendChild(p3);
+    article.appendChild(section);
+}
+
+//Appends each of the electronic items to the page
+for (i = 0; i < homeInventory.electronics.length; i++) {
+    let section = document.createElement("section");
+    let p1 = document.createElement('p');
+    let p2 = document.createElement('p');
+    let p3 = document.createElement('p');
+    let article = document.getElementById("myStuff");
+
+    p1.innerHTML = "Name: " + homeInventory.electronics[i].name;
+    p2.innerHTML = "Location: " + homeInventory.electronics[i].location;
+    p3.innerHTML = "Description: " + homeInventory.electronics[i].description;
+
+    section.appendChild(p1);
+    section.appendChild(p2);
+    section.appendChild(p3);
+    article.appendChild(section);
+}
 
