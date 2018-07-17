@@ -22,7 +22,7 @@ const guitar = {
 
 const keyboard = {
     name: "MIDI keyboard",
-    location: "living room",
+    location: "Living Room",
     description: "Very helpful tool for writing and recording music"
 }
 
@@ -51,8 +51,8 @@ const tv = {
 }
 
 const couch = {
-    name: "couch",
-    location: "living room",
+    name: "Couch",
+    location: "Living Room",
     description: "The perfect place for an afternoon nap"
 }
 
@@ -63,7 +63,7 @@ const chair = {
 }
 
 const dogBed = {
-    name: "Dog bed",
+    name: "Dog Bed",
     location: "Bedroom",
     description: "Where my dog sleeps"
 }
@@ -106,8 +106,12 @@ saveDatabase(HomeInventoryDatabase, "HomeInventory");
 
 const homeInventory = loadDatabase("HomeInventory");
 
+console.log(homeInventory);
+
+//Loops through the category i.e. furniture, music, or electronics
 for (category in homeInventory) {
-    for (item in homeInventory[category]) {
+    //Loops through each key for that category
+    for (key in homeInventory[category]) {
         //Creates the section element on the page
         let section = document.createElement("section");
 
@@ -120,9 +124,9 @@ for (category in homeInventory) {
         let article = document.getElementById("myStuff");
 
         //Gets the name, location, and description of each item and stores it in the respective variable of the same name
-        let name = homeInventory[category][item].name;
-        let location = homeInventory[category][item].location;
-        let description = homeInventory[category][item].description;
+        let name = homeInventory[category][key].name;
+        let location = homeInventory[category][key].location;
+        let description = homeInventory[category][key].description;
 
         //Sets the inner HTML of the paragraphs to the value of the name, location, and description variables
         p1.innerHTML += "Name: " + name
@@ -136,7 +140,11 @@ for (category in homeInventory) {
 
         //Appends the section element to article with id myStuff
         article.appendChild(section);
+
+        let hr = document.createElement("hr");
+        article.appendChild(hr);
     }
+
 }
 
 // for (i = 0; i < homeInventory.electronics; i++) {
