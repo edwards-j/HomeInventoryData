@@ -137,8 +137,8 @@ for (category in homeInventory) {
         let description = homeInventory[category][key].description;
 
         //Sets the inner HTML of the paragraphs to the value of the name, location, and description variables
-        p1.innerHTML += '<strong>Name: </strong>' + name
-        p2.innerHTML += "<strong>Location: </strong" + location;
+        p1.innerHTML += '<strong>Name: </strong>' + name;
+        p2.innerHTML += "<strong>Location: </strong>" + location;
         p3.innerHTML += "<strong>Description: </strong>" + description;
 
         //Appends the paragraphs to the section element we created earlier
