@@ -104,12 +104,23 @@ const loadDatabase = function (localStorageKey) {
 // Persist the database to localStorage
 saveDatabase(HomeInventoryDatabase, "HomeInventory");
 
+//Loads database data and stores it in the variable homeInventory
 const homeInventory = loadDatabase("HomeInventory");
 
 console.log(homeInventory);
 
 //Loops through the category i.e. furniture, music, or electronics
 for (category in homeInventory) {
+    //Gets the element with id myStuff and stores it in variable 'article'
+    let article = document.getElementById("myStuff");
+
+    //Creates a header element
+    let header = document.createElement('h3');
+    //Sets the value of the header's content and capitalizes it
+    header.innerHTML = category.toUpperCase();
+    //Appends the header to the page
+    article.appendChild(header);
+
     //Loops through each key for that category
     for (key in homeInventory[category]) {
         //Creates the section element on the page
@@ -120,18 +131,15 @@ for (category in homeInventory) {
         let p2 = document.createElement("p");
         let p3 = document.createElement("p");
 
-        //Gets the element with id myStuff and stores it in article
-        let article = document.getElementById("myStuff");
-
         //Gets the name, location, and description of each item and stores it in the respective variable of the same name
         let name = homeInventory[category][key].name;
         let location = homeInventory[category][key].location;
         let description = homeInventory[category][key].description;
 
         //Sets the inner HTML of the paragraphs to the value of the name, location, and description variables
-        p1.innerHTML += "Name: " + name
-        p2.innerHTML += "Location: " + location;
-        p3.innerHTML += "Description: " + description;
+        p1.innerHTML += '<strong>Name: </strong>' + name
+        p2.innerHTML += "<strong>Location: </strong" + location;
+        p3.innerHTML += "<strong>Description: </strong>" + description;
 
         //Appends the paragraphs to the section element we created earlier
         section.appendChild(p1);
@@ -141,10 +149,10 @@ for (category in homeInventory) {
         //Appends the section element to article with id myStuff
         article.appendChild(section);
 
+        //Creates a horizontal rule after each section to improve readability
         let hr = document.createElement("hr");
         article.appendChild(hr);
     }
-
 }
 
 // for (i = 0; i < homeInventory.electronics; i++) {
